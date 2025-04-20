@@ -1,0 +1,52 @@
+// Import Bulma
+@import 'bulma/bulma';
+
+// Import utilitas Bulma
+@use "sass/utilities/css-variables" as cv;
+@use "sass/themes/dark" as dark;
+@use "sass/themes/setup";
+
+// Dark mode sistem
+@include cv.system-theme($name: "dark") {
+    @include dark.dark-theme;
+}
+
+// Dark mode manual
+@include cv.bulma-theme($name: "dark") {
+    @include dark.dark-theme;
+    @include setup.setup-theme;
+}
+
+// Style toggle button
+.dark-mode-toggle {
+    position: relative;
+    width: $dark-mode-toggle-size;
+    height: $dark-mode-toggle-size;
+    border-radius: 50%;
+    cursor: pointer;
+
+    .icon {
+        position: absolute;
+        transition: all 0.3s ease;
+
+        &.sun {
+            opacity: 1;
+        }
+
+        &.moon {
+            opacity: 0;
+        }
+    }
+}
+
+[data-theme="dark"] {
+    .dark-mode-toggle {
+        .sun {
+            opacity: 0;
+        }
+
+        .moon {
+            opacity: 1;
+        }
+    }
+}
