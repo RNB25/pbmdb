@@ -20,9 +20,9 @@
       const icon = document.getElementById('theme-icon');
       icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
       lucide.createIcons();
-    });
+  });
   </script>
-<body>
+  <body>
 
 </body>
 </html>

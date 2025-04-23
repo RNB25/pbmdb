@@ -1,4 +1,5 @@
 import './bootstrap';
+import 'flowbite';
 
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');

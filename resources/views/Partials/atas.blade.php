@@ -8,6 +8,8 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Bulma CSS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
     <style>
         span, p {
