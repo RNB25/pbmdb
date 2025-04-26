@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CalonSiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,13 @@ Route::fallback(function () {
         return view('Module.Dashboard.main');
     });
 // });
+
+// Route untuk form registrasi calon siswa
+Route::get('/register', function () {
+    return view('Module.Registrasi.main');
+})->name('calon-siswa.register.form');
+
+// Route untuk submit form registrasi calon siswa
+Route::post('/register', [CalonSiswaController::class, 'register'])->name('calon-siswa.register');
 
 
