@@ -3,5 +3,7 @@
 @section('title', 'Dahboard')
 
 @section('content')
-    @include('Module.Registrasi.Partials.register')
+    <section class="hero is-fullheight-with-navbar">
+        @include('Module.Registrasi.Partials.register')
+    </section>
 @endsection
