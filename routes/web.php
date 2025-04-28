@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalonSiswaController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +29,12 @@ Route::fallback(function () {
     });
 // });
 
-// Route untuk form registrasi calon siswa
-Route::get('/register', function () {
-    return view('Module.Registrasi.main');
-})->name('calon-siswa.register.form');
-
-// Route untuk submit form registrasi calon siswa
-Route::post('/register', [CalonSiswaController::class, 'register'])->name('calon-siswa.register');
+// User Management Routes
+Route::prefix('register')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('users.index');
+    Route::post('/', [UserController::class, 'store'])->name('users.store');
+    Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+});
 
 

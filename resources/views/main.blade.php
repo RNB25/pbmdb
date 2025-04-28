@@ -1,6 +1,6 @@
 @include('partials.atas')
 
-<section>
+<section class="h-full w-full">
     <div>
         @yield('content')
     </div>
