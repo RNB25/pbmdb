@@ -63,6 +63,7 @@
                 <tr>
                     <th scope="col" class="px-6 py-3">No</th>
                     <th scope="col" class="px-6 py-3">Nama</th>
+                    <th scope="col" class="px-6 py-3">Username</th>
                     <th scope="col" class="px-6 py-3">Email</th>
                     <th scope="col" class="px-6 py-3">Tanggal Dibuat</th>
                     <th scope="col" class="px-6 py-3">Aksi</th>
@@ -74,6 +75,9 @@
                         <th class="px-6 py-4">{{ $key + 1 }}</th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ $user->name }}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            {{ $user->username }}
                         </th>
                         <td class="px-6 py-4">{{ $user->email }}</td>
                         <td class="px-6 py-4">{{ $user->created_at->format('d/m/Y H:i') }}</td>
@@ -143,6 +147,13 @@
                                 required>
                         </div>
                         <div>
+                            <label for="username"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                            <input type="text" name="username" id="username"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                required>
+                        </div>
+                        <div>
                             <label for="email"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                             <input type="email" name="email" id="email"
@@ -199,6 +210,13 @@
                                 <label for="edit-name-{{ $user->id }}"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                                 <input type="text" name="name" id="edit-name-{{ $user->id }}" value="{{ $user->name }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="edit-name-{{ $user->id }}"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                                <input type="text" name="username" id="edit-name-{{ $user->id }}" value="{{ $user->username }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required>
                             </div>
