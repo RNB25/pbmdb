@@ -5,6 +5,7 @@ use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
+use App\Http\Controllers\PendaftaranSiswa\DashboardPendaftaranSiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,14 @@ Route::fallback(function () {
     return response()->view('Errors.404', [], 404);
 });
 
-Route::get('/login', function () {
-    return view('Auth.login');
-})->name('login');
-
-Route::post('/login', LoginController::class)->name('login');
-
 Route::get('/', function () {
     return view('Module.Dashboard.main');
 });
+// login
+Route::get('/login', function () {
+    return view('Auth.login');
+})->name('login');
+Route::post('/login', LoginController::class)->name('login');
 
 Route::middleware('jwt.auth.blade')->group(function () {
     Route::prefix('register')->group(function () {
@@ -39,4 +39,8 @@ Route::middleware('jwt.auth.blade')->group(function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     });
     Route::post('/logout', LogoutController::class)->name('logout');
+});
+
+Route::prefix('module-pendaftaran')->group(function () {
+    Route::get('/', [DashboardPendaftaranSiswaController::class,'index'])->name('siswa.index');
 });

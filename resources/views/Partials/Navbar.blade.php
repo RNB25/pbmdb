@@ -46,8 +46,7 @@
         <div class="navbar-end is-flex is-align-items-center">
             <div class="navbar-item">
                 <div class="buttons">
-
-                    <a href="/register" class="button is-link">Pendaftaran</a>
+                    <a href="/module-pendaftaran" class="button is-link">Pendaftaran</a>
                 </div>
             </div>
         </div>
