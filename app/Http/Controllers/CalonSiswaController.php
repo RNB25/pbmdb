@@ -53,7 +53,7 @@ class CalonSiswaController extends Controller
             'is_lunas'       => false,
             'status'         => 'Unpaid',
             'is_aktif'       => true,
-            'kode_ekternal'  => 'PEMBAYARAN_FORMULIR',
+            'kode_eksternal'  => 'PEMBAYARAN_FORMULIR',
             'created_by'     => auth()->id() ?? 2,
             'updated_by'     => auth()->id() ?? 2,
         ]);
@@ -106,6 +106,22 @@ class CalonSiswaController extends Controller
             $pembayaran->update(['snap_token' => $snapToken]);
         } catch (\Exception $e) {
             Log::error('Midtrans Error: ' . $e->getMessage());
+        }
+    }
+
+    public function callback(Request $request){
+        $serverKey = config('midtrans.server_key');
+        $hasbed = hash('sha512', $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+        if($hasbed == $request->signature_key){
+            if($request->transaction_status == 'capture'){
+                $payment = PembayaranFormulir::find($request->order_id);
+                $payment->update([
+                    'status' => 'Paid',
+                    'is_lunas' => true,
+                    'tanggal_bayar' => $request->expiry_time,
+                    'metode_pembayaran' => $request->payment_type
+                ]);
+            }
         }
     }
 }
