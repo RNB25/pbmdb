@@ -3,28 +3,27 @@
 @section('title', 'Dashboard Registrasi Siswa')
 
 @section('content')
+@include('Module.PendaftaranSiswa.Component.toats')
+
+
     <div class="flex h-screen bg-gray-50 text-gray-900">
         <aside class="w-64">
             <nav class="px-4 space-y-2 mt-24">
                 <ul class="space-y-2">
-                    <!-- Beranda -->
                     <li>
                         <button data-section="beranda" onclick="setContent('beranda', 'Info Alur Pendaftaran Online')"
                             class="w-full text-black rounded-lg p-2 flex items-center space-x-2 text-sm font-medium hover:bg-green-200">
                             <span>
-                                <!-- Icon -->
                             </span>
                             <span>Info Alur Pendaftaran Online</span>
                         </button>
                     </li>
 
-                    <!-- Dropdown Pendaftaran -->
                     <li>
-                        <div>
+                        <div style="justify-content: space-around" >
                             <button onclick="toggleDropdown(this)"
                                 class="w-full text-black rounded-lg p-2 flex items-center justify-between text-sm font-medium hover:bg-green-200 dropdown-toggle">
-                                <span class="flex items-center space-x-2">
-                                    <!-- Icon -->
+                                <span class="flex justify-space-around space-x-2">
                                     <svg class="w-6 h-6 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="..." />
                                     </svg>
@@ -38,15 +37,14 @@
                                 </svg>
                             </button>
 
-                            <!-- Dropdown Menu -->
                             <ul class="hidden mt-1 ml-6 space-y-1 text-sm text-gray-700" id="dropdown-pendaftaran">
                                 <li>
-                                    <button data-section="pendaftaran" onclick="setContent('pendaftaran', 'Siswa Baru')"
-                                        class="w-full text-left p-2 rounded hover:bg-green-100">Siswa Baru</button>
+                                    <button data-section="registrasi" onclick="setContent('registrasi', 'Registrasi')"
+                                        class="w-full text-left p-2 rounded hover:bg-green-100">Registrasi</button>
                                 </li>
                                 <li>
-                                    <button data-section="pendaftaran" onclick="setContent('pendaftaran', 'Siswa Lama')"
-                                        class="w-full text-left p-2 rounded hover:bg-green-100">Siswa Lama</button>
+                                    <button onclick="window.location.href='/login'"
+                                        class="w-full text-left p-2 rounded hover:bg-green-100">Login</button>
                                 </li>
                             </ul>
                         </div>
@@ -60,19 +58,20 @@
                 <span class="text-2xl font-bold text-gray-800 mb-4" id="main-title"></span>
             </div>
 
-            <!-- Konten utama -->
             <div id="content-area" class="overflow-y-auto max-h-[calc(100vh-180px)]">
                 @include('Module.PendaftaranSiswa.Partials.informasi')
             </div>
         </main>
     </div>
 
-    <!-- Konten Tersembunyi -->
     <div id="beranda-content" class="hidden">
         @include('Module.PendaftaranSiswa.Partials.informasi')
     </div>
-    <div id="pendaftaran-content" class="hidden">
-        @include('Module.PendaftaranSiswa.Partials.pendaftaran-siswa')
+    {{-- <div id="calon-siswa-content" class="hidden">
+        @include('Module.PendaftaranSiswa.Partials.PendaftaranSiswa.pendaftaran-siswa')
+    </div> --}}
+    <div id="registrasi-content" class="hidden">
+        @include('Module.PendaftaranSiswa.Partials.PendaftaranSiswa.registrasi-siswa')
     </div>
     <div id="komputer-content" class="hidden">
         <div class="p-4 border rounded bg-white shadow">
@@ -80,33 +79,29 @@
         </div>
     </div>
 
-    <!-- Script -->
     <script>
         function setContent(section, title = '') {
-            // Reset semua tombol
             document.querySelectorAll('button[data-section]').forEach(btn => {
                 btn.classList.remove('bg-green-100', 'font-bold');
             });
 
-            // Tandai tombol aktif
             const activeBtns = document.querySelectorAll(`button[data-section="${section}"]`);
             activeBtns.forEach(btn => {
                 btn.classList.add('bg-green-100', 'font-bold');
             });
 
-            // Set judul
             const titleEl = document.getElementById("main-title");
             if (titleEl && title) titleEl.innerText = title;
 
-            // Set konten
             const contentMap = {
                 beranda: document.getElementById("beranda-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
-                pendaftaran: document.getElementById("pendaftaran-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
+                calonSiswa: document.getElementById("calon-siswa-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
+                registrasi: document.getElementById("registrasi-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
+                login: document.getElementById("login")?.innerHTML || '<div>Konten tidak ditemukan</div>',
                 komputer: document.getElementById("komputer-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
             };
             document.getElementById("content-area").innerHTML = contentMap[section];
 
-            // Buka dropdown jika submenu aktif
             toggleDropdownBySection(section);
         }
 

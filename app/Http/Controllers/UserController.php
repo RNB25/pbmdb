@@ -32,6 +32,9 @@ class UserController extends Controller
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['is_aktif'] = true;
+        $validated['kode_eksternal'] = 'ADMIN';
+        $validated['status_users_id'] = 1;
 
         User::create($validated);
 

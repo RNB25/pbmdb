@@ -110,7 +110,7 @@
 
                 <!-- Forgot Password -->
                 <div class="text-right mb-6">
-                    <a href="#" class="italic text-sm text-gray-500 hover:underline">Forgot Password?</a>
+                    <a href="#" class="italic text-sm text-gray-500 hover:underline">KARYAGUNA</a>
                 </div>
 
                 <!-- Button -->
