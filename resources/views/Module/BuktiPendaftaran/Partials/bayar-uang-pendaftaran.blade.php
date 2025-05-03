@@ -18,7 +18,7 @@
     </div>
     <div class="column is-6">
         <label for="username" class="block mb-2 text-sm font-medium text-black">No Handphone</label>
-        <input name="no_hp" value="{{ $calonSiswa->jalur_masuk }}" type="text" id="username" disabled
+        <input name="no_hp" value="{{ $calonSiswa->no_hp }}" type="text" id="username" disabled
             class="block w-full p-2 text-black border border-gray-300 rounded-lg bg-white text-xs focus:ring-blue-500 focus:border-blue-500">
     </div>
     <div class="column is-12">
