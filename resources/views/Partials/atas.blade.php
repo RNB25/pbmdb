@@ -19,7 +19,7 @@
         data-client-key="{{ config('midtrans.client_key') }}"></script>
 
     <style>
-        span,
+        /* span,
         p {
             font-family: 'Arial', sans-serif;
         }
@@ -75,7 +75,7 @@
             width: 100%;
             max-width: 400px;
             margin: auto;
-        }
+        } */
     </style>
 </head>
 @include('Partials.Navbar')
