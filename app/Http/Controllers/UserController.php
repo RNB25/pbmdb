@@ -18,7 +18,7 @@ class UserController extends Controller
                   ->orWhere('username', 'like', "%{$search}%");
         })->latest()->paginate(10);
 
-        return view('Module.Registrasi.main', compact('users', 'search'));
+        return view('Module.Superadmin.Registrasi.main', compact('users', 'search'));
     }
 
     public function store(Request $request)
@@ -73,5 +73,11 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully.');
+    }
+
+    public function registrasi()
+    {
+        $users = User::all();
+        return view('Module.Superadmin.Registrasi.index', compact('users'));
     }
 }

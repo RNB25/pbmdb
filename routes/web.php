@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\PendaftaranSiswaController;
 use App\Http\Controllers\PendaftaranSiswa\DashboardPendaftaranSiswaController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,7 @@ Route::fallback(function () {
     return response()->view('Errors.404', [], 404);
 });
 
-Route::get('/', function () {
-    return view('Module.Dashboard.main');
-});
+Route::get('/', [LandingPageController::class, 'index']);
 // users
 Route::get('/login', function () {
     return view('Auth.login');
@@ -52,4 +52,26 @@ Route::prefix('pendaftaran-siswa')->group(function () {
     Route::post('/', [CalonSiswaController::class, 'store'])->name('siswa.registrasi');
     Route::post('/siswa-login', [CalonSiswaController::class, 'login'])->name('siswa.login');
 });
+
+// News routes
+Route::get('/berita', [NewsController::class, 'index'])->name('news.index');
+Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('news.show');
+
+// Admin news routes
+Route::middleware('jwt.auth.blade')->group(function () {
+    Route::resource('news', NewsController::class)->except(['index', 'show']);
+});
+
+// Temporary route to check news data
+Route::get('/check-news', function() {
+    $news = \App\Models\News::all();
+    dd([
+        'count' => $news->count(),
+        'data' => $news->toArray()
+    ]);
+});
+
+Route::get('/gallery', function () {
+    return view('Module.Dashboard.gallery');
+})->name('gallery.index');
 

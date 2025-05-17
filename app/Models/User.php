@@ -7,10 +7,11 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'username',
-        'status_users_id',
-        'is_aktif',
-        'kode_eksternal',
+        'role',
     ];
 
     /**
@@ -42,13 +40,10 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

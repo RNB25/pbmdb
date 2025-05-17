@@ -9,6 +9,7 @@
     </title>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Bulma CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

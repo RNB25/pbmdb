@@ -51,7 +51,7 @@
                     onSuccess: function(result) {
                         alert("payment success!");
                         console.log(result);
-                    },
+                },
                     onPending: function(result) {
                         alert("waiting your payment!");
                         console.log(result);
