@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,8 +20,8 @@
     </style>
 </head>
 <body>
-    @include('Module.Superadmin.Partials.sidebar')
-    
+    @include('Module.Superadmin.Registrasi.Partials.register')
+
     <div class="main-content">
         @yield('content')
     </div>
@@ -32,4 +32,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @stack('scripts')
 </body>
-</html>
+</html> --}}
+
+@extends('../../main')
+
+@section('title', 'Dashboard Registrasi Siswa')
+
+@section('content')
+@include('Module.Superadmin.Registrasi.Partials.register')
+@endsection

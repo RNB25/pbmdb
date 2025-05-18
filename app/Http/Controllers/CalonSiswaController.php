@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CalonSiswa;
+use App\Models\Gelombang;
 use App\Models\PembayaranFormulir;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -21,18 +22,24 @@ class CalonSiswaController extends Controller
         $validator = Validator::make($request->all(), [
             'username'      => 'required|string|max:255',
             'password'      => 'required|string|min:6',
+            'nama_lengkap'  => 'required|string',
+            'nama_panggilan'  => 'required|string',
+            'tempat_lahir'  => 'required|string',
+            'tanggal_lahir' => 'required|date',
+            'agama'  => 'required|string',
+            'email'         => 'required|email|unique:calon_siswa_t,email',
+            'jenis_kelamin' => 'required|exists:jenis_kelamin_m,id',
+            'alamat'  => 'required|string',
             'jalur_masuk'   => 'required|string',
             'nisn'          => 'required|string',
-            'nama_lengkap'  => 'required|string',
-            'tanggal_lahir' => 'required|date',
             'no_hp'         => 'required|regex:/^[0-9]+$/',
-            'email'         => 'required|email|unique:calon_siswa_t,email',
         ]);
 
         if ($validator->fails()) {
             return back()
-                ->withErrors($validator)
-                ->withInput();
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('tab', 'registrasi');
         }
 
         $validated = $validator->validated();
@@ -47,9 +54,17 @@ class CalonSiswaController extends Controller
             'kode_eksternal' => 'SISWA',
         ]);
 
+        $today = now()->toDateString();
+
+        $gelombangAktif = Gelombang::where('is_aktif', true)
+            ->whereDate('tanggal_mulai', '<=', $today)
+            ->whereDate('tanggal_berakhir', '>=', $today)
+            ->orderBy('tanggal_mulai', 'asc')
+            ->first();
+
         $pembayaran = PembayaranFormulir::create([
             'users_id'       => $user->id,
-            'jumlah_harga'   => 20000,
+            'jumlah_harga'   => $gelombangAktif['biaya'],
             'is_lunas'       => false,
             'status'         => 'Unpaid',
             'is_aktif'       => true,
@@ -59,16 +74,21 @@ class CalonSiswaController extends Controller
         ]);
 
         $calon_siswa = CalonSiswa::create([
+            'is_aktif'      => false,
+            'kode_eksternal'      => 'KGJ',
             'users_id'       => $user->id,
             'pembayaran_formulir_id'       => $pembayaran->id,
-            'is_pembayaran_formulir'       => false,
+            'nama_lengkap'  => $validated['nama_lengkap'],
+            'nama_panggilan'  => $validated['nama_panggilan'],
+            'tempat_lahir'  => $validated['tempat_lahir'],
+            'jenis_kelamin_id'  => $validated['jenis_kelamin'],
+            'tanggal_lahir' => $validated['tanggal_lahir'],
+            'agama'  => $validated['agama'],
+            'email'         => $validated['email'],
+            'alamat'  => $validated['alamat'],
             'jalur_masuk'   => $validated['jalur_masuk'],
             'nisn'          => $validated['nisn'],
-            'nama_lengkap'  => $validated['nama_lengkap'],
-            'tanggal_lahir' => $validated['tanggal_lahir'],
             'no_hp'         => $validated['no_hp'],
-            'email'         => $validated['email'],
-            'is_aktif'      => false,
             'kode_ekternal' => 'DAFTAR_ONLINE',
             'created_by'    => auth()->id() ?? 2,
             'updated_by'    => auth()->id() ?? 2,

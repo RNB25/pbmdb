@@ -15,7 +15,6 @@ class PendaftaranSiswaController extends Controller
         $user = Auth::user();
 
         $calonSiswa = CalonSiswa::where('users_id', $user->id)->first();
-
         $pembayaranFormulir = PembayaranFormulir::where('users_id', $user->id)->first();
 
         return view('Module.BuktiPendaftaran.main', compact('user', 'calonSiswa','pembayaranFormulir'));

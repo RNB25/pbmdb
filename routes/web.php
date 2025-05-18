@@ -32,12 +32,17 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login', LoginController::class)->name('login');
 Route::middleware('jwt.auth.blade')->group(function () {
-    Route::prefix('register')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->name('users.index');
-        Route::post('/', [UserController::class, 'store'])->name('users.store');
-        Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
-        Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    });
+    // Route::prefix('register')->group(function () {
+    //     Route::get('/', [UserController::class, 'index'])->name('users.index');
+    //     Route::post('/', [UserController::class, 'store'])->name('users.store');
+    //     Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
+    //     Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    // });
+    //
+
+    // buat route baru aja san buat registrasi nya fungsi nya di faste aja nnti
+
+    //
     Route::post('/logout', LogoutController::class)->name('logout');
     Route::prefix('register-siswa')->group(function () {
         Route::get('/', [PendaftaranSiswaController::class, 'index'])->name('berkasi.siswa.index');
@@ -60,15 +65,6 @@ Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('news.s
 // Admin news routes
 Route::middleware('jwt.auth.blade')->group(function () {
     Route::resource('news', NewsController::class)->except(['index', 'show']);
-});
-
-// Temporary route to check news data
-Route::get('/check-news', function() {
-    $news = \App\Models\News::all();
-    dd([
-        'count' => $news->count(),
-        'data' => $news->toArray()
-    ]);
 });
 
 Route::get('/gallery', function () {

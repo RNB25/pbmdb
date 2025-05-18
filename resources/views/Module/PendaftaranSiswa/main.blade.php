@@ -3,7 +3,7 @@
 @section('title', 'Dashboard Registrasi Siswa')
 
 @section('content')
-@include('Module.PendaftaranSiswa.Component.toats')
+    @include('Module.PendaftaranSiswa.Component.toats')
 
 
     <div class="flex h-screen bg-gray-50 text-gray-900">
@@ -20,17 +20,16 @@
                     </li>
 
                     <li>
-                        <div style="justify-content: space-around" >
+                        <div style="justify-content: space-around">
                             <button onclick="toggleDropdown(this)"
                                 class="w-full text-black rounded-lg p-2 flex items-center justify-between text-sm font-medium hover:bg-green-200 dropdown-toggle">
                                 <span class="flex justify-space-around space-x-2">
                                     <svg class="w-6 h-6 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="..." />
+                                        {{-- <path d="..." /> --}}
                                     </svg>
                                     <span>Daftar Siswa</span>
                                 </span>
-                                <svg class="w-4 h-4 transition-transform transform" viewBox="0 0 20 20"
-                                    fill="currentColor">
+                                <svg class="w-4 h-4 transition-transform transform" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
                                         clip-rule="evenodd" />
@@ -95,8 +94,10 @@
 
             const contentMap = {
                 beranda: document.getElementById("beranda-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
-                calonSiswa: document.getElementById("calon-siswa-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
-                registrasi: document.getElementById("registrasi-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
+                calonSiswa: document.getElementById("calon-siswa-content")?.innerHTML ||
+                    '<div>Konten tidak ditemukan</div>',
+                registrasi: document.getElementById("registrasi-content")?.innerHTML ||
+                    '<div>Konten tidak ditemukan</div>',
                 login: document.getElementById("login")?.innerHTML || '<div>Konten tidak ditemukan</div>',
                 komputer: document.getElementById("komputer-content")?.innerHTML || '<div>Konten tidak ditemukan</div>',
             };
@@ -123,8 +124,12 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setContent('beranda', 'Info Alur Pendaftaran Online');
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('tab') === 'registrasi' || $errors->any())
+                setContent('registrasi', 'Registrasi');
+            @else
+                setContent('beranda', 'Info Alur Pendaftaran Online');
+            @endif
         });
     </script>
 @endsection

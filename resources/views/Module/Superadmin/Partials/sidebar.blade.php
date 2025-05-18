@@ -5,12 +5,12 @@
     </div>
     <ul class="sidebar-menu">
         <li class="sidebar-item {{ request()->is('superadmin/dashboard') ? 'active' : '' }}">
-            <a href="{{ route('superadmin.dashboard') }}" class="sidebar-link">
+            <a href="{{ route('superadmin.registrasi-users.index') }}" class="sidebar-link">
                 <i class="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="sidebar-item {{ request()->is('superadmin/users*') ? 'active' : '' }}">
+        {{-- <li class="sidebar-item {{ request()->is('superadmin/users*') ? 'active' : '' }}">
             <a href="{{ route('superadmin.users.index') }}" class="sidebar-link">
                 <i class="fas fa-users"></i>
                 <span>User Management</span>
@@ -27,7 +27,7 @@
                 <i class="fas fa-cog"></i>
                 <span>Settings</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </div>
 
@@ -92,4 +92,4 @@
 .sidebar-link span {
     font-size: 0.9rem;
 }
-</style> 
+</style>
