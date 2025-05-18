@@ -1,17 +1,18 @@
-<nav id="main-navbar" class="navbar is-fixed-top navbar-white-text px-16" style="background-color: transparent; box-shadow: none;" role="navigation"
-    aria-label="main navigation">
+<nav id="main-navbar"
+     class="navbar is-fixed-top px-16 {{ request()->routeIs('siswa.index') || request()->routeIs('berkasi.siswa.index') ? 'navbar-white-bg' : 'navbar-white-text' }}"
+     style="background-color: transparent; box-shadow: none;"
+     role="navigation" aria-label="main navigation">
+
     <div class="navbar-brand">
         <a class="navbar-item" href="./">
-            <img src="{{ asset('asset/logo/logo-smp.png') }}" style="max-height: 4rem;"
-                alt="Logo">
+            <img src="{{ asset('asset/logo/logo-smp.png') }}" style="max-height: 4rem;" alt="Logo">
             <div class="is-flex is-flex-direction-column is-justify-content-center ml-2">
                 <p class="has-text-weight-bold is-size-6 navbar-text-color">Sekolah Menengah Pertama</p>
                 <p class="is-size-9 navbar-text-color">KARYA GUNA JAYA</p>
             </div>
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-            data-target="navbarBasicExample">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -24,7 +25,7 @@
 
             <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
-                    <a class="ml-5 navbar-text-color" href="" aria-haspopup="true" aria-controls="dropdown-menu4">Profile</a>
+                    <a class="ml-5 navbar-text-color" href="#" aria-haspopup="true" aria-controls="dropdown-menu4">Profile</a>
                     <i class="fas fa-angle-down navbar-text-color" aria-hidden="true"></i>
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">
@@ -40,7 +41,6 @@
             <a class="ml-5 navbar-text-color" href="">Info</a>
             <a class="ml-5 navbar-text-color" href="">Galeri</a>
             <a class="ml-5 navbar-text-color" href="">Contact</a>
-
         </div>
 
         <div class="navbar-end is-flex is-align-items-center">
@@ -52,6 +52,7 @@
         </div>
     </div>
 </nav>
+
 <style>
     .navbar-white-text .navbar-text-color,
     .navbar-white-text .navbar-text-color:visited,
@@ -63,6 +64,7 @@
         color: #fff !important;
         fill: #fff !important;
     }
+
     .navbar-white-bg .navbar-text-color,
     .navbar-white-bg .navbar-text-color:visited,
     .navbar-white-bg .navbar-text-color:active,
@@ -73,23 +75,31 @@
         color: #222 !important;
         fill: #222 !important;
     }
+
+    #main-navbar {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 </style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var navbar = document.getElementById('main-navbar');
+        const navbar = document.getElementById('main-navbar');
+
+        // Cek route di server-side, lalu kirim ke JS
+        const isWhiteNavbarPage = @json(request()->routeIs('siswa.index') || request()->routeIs('berkasi.siswa.index'));
+
         function updateNavbarTextColor() {
-            if (window.scrollY > 0) {
-                navbar.style.backgroundColor = 'white';
-                navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-                navbar.classList.add('has-background-white', 'navbar-white-bg');
-                navbar.classList.remove('navbar-white-text');
-            } else {
-                navbar.style.backgroundColor = 'transparent';
-                navbar.style.boxShadow = 'none';
-                navbar.classList.remove('has-background-white', 'navbar-white-bg');
-                navbar.classList.add('navbar-white-text');
+            if (!isWhiteNavbarPage) {
+                if (window.scrollY > 0) {
+                    navbar.classList.remove('navbar-white-text');
+                    navbar.classList.add('navbar-white-bg');
+                } else {
+                    navbar.classList.add('navbar-white-text');
+                    navbar.classList.remove('navbar-white-bg');
+                }
             }
         }
+
         updateNavbarTextColor();
         window.addEventListener('scroll', updateNavbarTextColor);
     });

@@ -41,11 +41,13 @@ Route::middleware('jwt.auth.blade')->group(function () {
     //
 
     // buat route baru aja san buat registrasi nya fungsi nya di faste aja nnti
-
-    //
     Route::post('/logout', LogoutController::class)->name('logout');
+
+
+    // siswa
     Route::prefix('register-siswa')->group(function () {
         Route::get('/', [PendaftaranSiswaController::class, 'index'])->name('berkasi.siswa.index');
+        Route::put('/put/{idCalonSiswa}', [PendaftaranSiswaController::class, 'update'])->name('siswa.formulir');
     });
 });
 
@@ -55,7 +57,6 @@ Route::prefix('module-pendaftaran')->group(function () {
 });
 Route::prefix('pendaftaran-siswa')->group(function () {
     Route::post('/', [CalonSiswaController::class, 'store'])->name('siswa.registrasi');
-    Route::post('/siswa-login', [CalonSiswaController::class, 'login'])->name('siswa.login');
 });
 
 // News routes

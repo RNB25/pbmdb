@@ -11,19 +11,8 @@ class CalonSiswa extends Model
 
     protected $table = 'calon_siswa_t';
 
-    protected $fillable = [
-        'nama_lengkap',
-        'jenis_kelamin',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'agama',
-        'alamat',
-        'no_hp',
-        'email',
-        'asal_sekolah',
-        'tahun_lulus',
-        'status_pendaftaran',
-        'is_aktif'
+    protected $guarded = [
+        'id'
     ];
 
     protected $casts = [

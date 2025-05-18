@@ -34,7 +34,6 @@ class CalonSiswaController extends Controller
             'nisn'          => 'required|string',
             'no_hp'         => 'required|regex:/^[0-9]+$/',
         ]);
-
         if ($validator->fails()) {
             return back()
                     ->withErrors($validator)
@@ -74,24 +73,24 @@ class CalonSiswaController extends Controller
         ]);
 
         $calon_siswa = CalonSiswa::create([
-            'is_aktif'      => false,
-            'kode_eksternal'      => 'KGJ',
-            'users_id'       => $user->id,
-            'pembayaran_formulir_id'       => $pembayaran->id,
-            'nama_lengkap'  => $validated['nama_lengkap'],
-            'nama_panggilan'  => $validated['nama_panggilan'],
-            'tempat_lahir'  => $validated['tempat_lahir'],
-            'jenis_kelamin_id'  => $validated['jenis_kelamin'],
-            'tanggal_lahir' => $validated['tanggal_lahir'],
-            'agama'  => $validated['agama'],
-            'email'         => $validated['email'],
-            'alamat'  => $validated['alamat'],
-            'jalur_masuk'   => $validated['jalur_masuk'],
-            'nisn'          => $validated['nisn'],
-            'no_hp'         => $validated['no_hp'],
-            'kode_ekternal' => 'DAFTAR_ONLINE',
-            'created_by'    => auth()->id() ?? 2,
-            'updated_by'    => auth()->id() ?? 2,
+            'is_aktif'           => false,
+            'kode_eksternal'     => 'KGJ',
+            'users_id'           => $user->id,
+            'pembayaran_formulir_id' => $pembayaran->id,
+            'nama_lengkap'       => $validated['nama_lengkap'],
+            'nama_panggilan'     => $validated['nama_panggilan'],
+            'tempat_lahir'       => $validated['tempat_lahir'],
+            'jenis_kelamin_id'   => $validated['jenis_kelamin'],
+            'tanggal_lahir'      => $validated['tanggal_lahir'],
+            'agama'              => $validated['agama'],
+            'email'              => $validated['email'],
+            'alamat'             => $validated['alamat'],
+            'jalur_masuk'        => $validated['jalur_masuk'],
+            'nisn'               => $validated['nisn'],
+            'no_hp'              => $validated['no_hp'],
+            'kode_ekternal'      => 'DAFTAR_ONLINE',
+            'created_by'         => auth()->id() ?? 2,
+            'updated_by'         => auth()->id() ?? 2,
         ]);
 
         $this->mitrans($pembayaran,$calon_siswa);
