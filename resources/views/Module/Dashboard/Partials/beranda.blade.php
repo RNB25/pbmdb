@@ -14,10 +14,10 @@
                                     Karya Guna Jaya (KGJ).
                 </p>
                 <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <a href="" class="inline-flex items-center justify-center !text-white rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-11 px-8">
+                    <a href="{{ route('siswa.index') }}" class="inline-flex items-center justify-center !text-white rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-11 px-8">
                         PPDB Online
-                    </a>    
-                
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 </svg>
                 <p class="text-sm md:text-base font-medium">
                     Pendaftaran Peserta Didik Baru Tahun Ajaran 2025/2026 telah dibuka!
-                    <a href="" class="ml-2 underline bg-blue-300 p-4">Daftar sekarang</a>
+                    <a href="{{ route('siswa.index') }}" class="ml-2 underline bg-blue-300 p-4">Daftar sekarang</a>
                 </p>
             </div>
         </div>
@@ -74,12 +74,12 @@
                             <li>Mengembangkan Delapan Standar Pendidikan yang bertaraf Internasional.</li>
                         </ul>
                     </div>
-                    <a href="#" class="inline-flex !text-white items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-10 px-4 py-2">
+                    {{-- <a href="#" class="inline-flex !text-white items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-10 px-4 py-2">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -242,7 +242,7 @@
                                 Ruang kelas yang nyaman dilengkapi dengan AC, smart TV, dan peralatan multimedia.
                             </p>
                         </div>
-                       
+
                     </div>
                     <div class="bg-white  rounded-lg shadow-sm">
                         <div class="h-48 relative mb-4 rounded-md overflow-hidden">
@@ -265,7 +265,7 @@
                                 Ruang kelas yang nyaman dilengkapi dengan AC, smart TV, dan peralatan multimedia.
                             </p>
                         </div>
-                       
+
                     </div>
                 </div>
 
@@ -360,7 +360,7 @@
                     ->orderBy('published_date', 'desc')
                     ->take(3)
                     ->get();
-                
+
                 // Debug information
                 if (app()->environment('local')) {
                     echo '<!-- Debug: Found ' . $latestNews->count() . ' news articles -->';
@@ -533,7 +533,7 @@
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-blue-600 hover:bg-blue-50 h-11 px-8">
+                    <a href="{{ route('siswa.index') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-blue-600 hover:bg-blue-50 h-11 px-8">
                         PPDB Online
                     </a>
                     <a href="#kontak" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-white text-white hover:bg-blue-700 h-11 px-8">

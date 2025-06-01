@@ -30,26 +30,58 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                     <div class="dropdown-content">
-                        <a href="#" class="dropdown-item has-text-weight-semibold navbar-text-color">Struktur Organisasi</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold navbar-text-color">Kepala Sekolah</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold navbar-text-color">Pendidik</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold navbar-text-color">Ekstrakulikuler</a>
+                        <a href="#program" class="dropdown-item has-text-weight-semibold" style="color: black">Struktur Organisasi</a>
+                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Kepala Sekolah</a>
+                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Pendidik</a>
+                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Ekstrakulikuler</a>
                     </div>
                 </div>
             </div>
 
-            <a class="ml-5 navbar-text-color" href="">Info</a>
-            <a class="ml-5 navbar-text-color" href="">Galeri</a>
-            <a class="ml-5 navbar-text-color" href="">Contact</a>
+            <a class="ml-5 navbar-text-color" href="#berita">Info</a>
+            <a class="ml-5 navbar-text-color" href="#galeri">Galeri</a>
+            <a class="ml-5 navbar-text-color" href="#kontak">Contact</a>
         </div>
 
+        {{-- @dd(Auth::user()->email) --}}
         <div class="navbar-end is-flex is-align-items-center">
+            @if (isset(Auth::user()->email))
+            <div class="flex items-center space-x-3">
+                <div class="relative">
+                    @if(auth()->user()->profile_photo)
+                        <img src="{{ asset(auth()->user()->profile_photo) }}" alt="Profile Photo" class="w-10 h-10 rounded-full object-cover border-2 border-gray-200">
+                    @else
+                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                            <span class="text-gray-500 text-lg font-semibold">{{ substr(auth()->user()->name, 0, 1) }}</span>
+                        </div>
+                    @endif
+                </div>
+                <div class="text-sm">
+                    <p class="font-medium text-gray-900">{{ auth()->user()->name }}</p>
+                    <p class="text-gray-500">{{ auth()->user()->role }}</p>
+                </div>
+                 <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Logout
+                    </button>
+                </form>
+            </div>
+
+            @else
+
             <div class="navbar-item">
                 <div class="buttons">
                     <a href="{{ route('siswa.index') }}" class="button is-link !text-white">Pendaftaran</a>
                 </div>
             </div>
+            @endif
+
         </div>
+
     </div>
 </nav>
 
