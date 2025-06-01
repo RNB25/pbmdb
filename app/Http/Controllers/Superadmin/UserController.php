@@ -71,8 +71,9 @@ class UserController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
             'password' => ['nullable', 'confirmed', Password::defaults()],
-            'role' => ['required', 'string', 'in:admin,superadmin'],
+            'role' => ['required', 'string', 'in:admin,superadmin,user'],
             'status' => ['required', 'boolean'],
+            'is_aktif' => ['required', 'boolean'],
             'profile_photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ]);
 
@@ -124,4 +125,4 @@ class UserController extends Controller
         return redirect()->route('superadmin.users.index')
             ->with('success', 'Pengguna berhasil dihapus');
     }
-} 
+}

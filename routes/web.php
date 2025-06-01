@@ -64,7 +64,7 @@ Route::middleware('jwt.auth.blade')->group(function () {
 Route::prefix('module-pendaftaran')->group(function () {
     Route::get('/', [DashboardPendaftaranSiswaController::class,'index'])->name('siswa.index');
 });
-Route::prefix('pendaftaran-siswa')->group(function () {
+Route::prefix('formulir-pendaftaran-siswa')->group(function () {
     Route::post('/', [CalonSiswaController::class, 'store'])->name('siswa.registrasi');
 });
 

@@ -26,14 +26,17 @@
                     Pembayaran
                 </a>
             </li>
-            <li class="me-2">
-                <a href="#" onclick="loadTabContent('formulirPendaftaran', event)"
-                    class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg
+            @if ($pembayaranFormulir['status'] == 'Paid')
+                <li class="me-2">
+                    <a href="#" onclick="loadTabContent('formulirPendaftaran', event)"
+                        class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg
                {{ $activeTab == 'formulirPendaftaran' ? 'text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500' : 'text-gray-500 border-transparent' }}">
-                    <svg class="w-4 h-4 me-2" ...></svg>
-                    Formulir
-                </a>
-            </li>
+                        <svg class="w-4 h-4 me-2" ...></svg>
+                        Formulir
+                    </a>
+                </li>
+            @endif
+
         </ul>
 
     </div>

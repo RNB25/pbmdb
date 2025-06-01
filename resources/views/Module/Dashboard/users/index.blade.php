@@ -32,6 +32,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Verifikasi</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -57,6 +58,11 @@
                                 {{ $user->status ? 'Aktif' : 'Nonaktif' }}
                             </span>
                         </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $user->status ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                {{ $user->is_aktif ? 'Aktif' : 'Nonaktif' }}
+                            </span>
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <a href="{{ route('superadmin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
                             <button onclick="openDeleteModal({{ $user->id }}, '{{ $user->name }}', 'pengguna', '{{ route('superadmin.users.destroy', $user) }}')" class="text-red-600 hover:text-red-900">Hapus</button>
@@ -79,4 +85,4 @@
 </div>
 
 @include('Module.Dashboard.Partials.delete-modal')
-@endsection 
+@endsection

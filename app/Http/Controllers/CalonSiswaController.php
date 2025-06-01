@@ -36,12 +36,26 @@ class CalonSiswaController extends Controller
         ]);
         if ($validator->fails()) {
             return back()
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('tab', 'registrasi');
+                ->withErrors($validator)
+                ->withInput()
+                ->with('tab', 'registrasi');
         }
 
         $validated = $validator->validated();
+        $today = now()->toDateString();
+
+        $gelombangAktif = Gelombang::where('is_aktif', true)
+            ->whereDate('tanggal_mulai', '<=', $today)
+            ->whereDate('tanggal_berakhir', '>=', $today)
+            ->orderBy('tanggal_mulai', 'asc')
+            ->first();
+
+
+        if (!$gelombangAktif) {
+            return redirect()
+                ->route('siswa.index')
+                ->with('gagal_creat', 'Pendaftaran gagal, karna saat ini gelombang pendaftaran belum dibuka.');
+        }
 
         $user = User::create([
             'name'      => $validated['nama_lengkap'],
@@ -53,13 +67,7 @@ class CalonSiswaController extends Controller
             'kode_eksternal' => 'SISWA',
         ]);
 
-        $today = now()->toDateString();
 
-        $gelombangAktif = Gelombang::where('is_aktif', true)
-            ->whereDate('tanggal_mulai', '<=', $today)
-            ->whereDate('tanggal_berakhir', '>=', $today)
-            ->orderBy('tanggal_mulai', 'asc')
-            ->first();
 
         $pembayaran = PembayaranFormulir::create([
             'users_id'       => $user->id,
@@ -93,14 +101,14 @@ class CalonSiswaController extends Controller
             'updated_by'         => auth()->id() ?? 2,
         ]);
 
-        $this->mitrans($pembayaran,$calon_siswa);
+        $this->mitrans($pembayaran, $calon_siswa);
 
         return redirect()
             ->route('siswa.index')
             ->with('success_pendaftaran', 'Pendaftaran berhasil, Menunggu Verifikasi');
     }
 
-    public function mitrans($pembayaran,$calon_siswa)
+    public function mitrans($pembayaran, $calon_siswa)
     {
         Config::$serverKey = config('midtrans.server_key');
         Config::$isProduction = false;
@@ -128,11 +136,12 @@ class CalonSiswaController extends Controller
         }
     }
 
-    public function callback(Request $request){
+    public function callback(Request $request)
+    {
         $serverKey = config('midtrans.server_key');
-        $hasbed = hash('sha512', $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
-        if($hasbed == $request->signature_key){
-            if($request->transaction_status == 'capture'){
+        $hasbed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        if ($hasbed == $request->signature_key) {
+            if ($request->transaction_status == 'capture') {
                 $payment = PembayaranFormulir::find($request->order_id);
                 $payment->update([
                     'status' => 'Paid',

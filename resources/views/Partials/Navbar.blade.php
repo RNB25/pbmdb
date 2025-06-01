@@ -46,7 +46,7 @@
         <div class="navbar-end is-flex is-align-items-center">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a href="/module-pendaftaran" class="button is-link !text-white">Pendaftaran</a>
+                    <a href="{{ route('siswa.index') }}" class="button is-link !text-white">Pendaftaran</a>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const navbar = document.getElementById('main-navbar');
-        
+
         // Cek apakah sedang di halaman beranda
         const isHomePage = @json(request()->is('/'));
 

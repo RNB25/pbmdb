@@ -97,6 +97,7 @@
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('role') border-red-500 @enderror"
                     id="role" name="role" required>
                     <option value="">Pilih Role</option>
+                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
                     <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                     <option value="superadmin" {{ old('role', $user->role) == 'superadmin' ? 'selected' : '' }}>Superadmin</option>
                 </select>
@@ -113,6 +114,22 @@
                     </label>
                     <label class="inline-flex items-center ml-6">
                         <input type="radio" name="status" value="0" {{ old('status', $user->status) == '0' ? 'checked' : '' }} class="form-radio">
+                        <span class="ml-2">Nonaktif</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Verifikasi
+                </label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_aktif" value="1" {{ old('is_aktif', $user->is_aktif) == '1' ? 'checked' : '' }} class="form-radio">
+                        <span class="ml-2">Aktif</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" name="is_aktif" value="0" {{ old('is_aktif', $user->is_aktif) == '0' ? 'checked' : '' }} class="form-radio">
                         <span class="ml-2">Nonaktif</span>
                     </label>
                 </div>
@@ -140,7 +157,7 @@ document.getElementById('profilePhotoInput').addEventListener('change', function
             // Hide current photo and initial placeholder
             document.getElementById('currentPhoto').classList.add('hidden');
             document.getElementById('initialPlaceholder').classList.add('hidden');
-            
+
             // Show and update preview
             const previewPhoto = document.getElementById('previewPhoto');
             previewPhoto.classList.remove('hidden');
@@ -159,4 +176,4 @@ document.getElementById('profilePhotoInput').addEventListener('change', function
 });
 </script>
 @endpush
-@endsection 
+@endsection
