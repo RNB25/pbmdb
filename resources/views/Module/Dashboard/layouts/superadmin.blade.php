@@ -62,21 +62,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('superadmin.facilities.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                        <a href="{{ route('superadmin.facility.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                             <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M18 7.5h-.423l-.452-1.09.3-.3a1.5 1.5 0 0 0 0-2.121L16.6 2.575a1.5 1.5 0 0 0-2.121 0l-.3.3-1.09-.452V2A1.5 1.5 0 0 0 11.5.5h-3A1.5 1.5 0 0 0 7 2v.423l-1.09.452-.3-.3a1.5 1.5 0 0 0-2.121 0L2.575 3.4a1.5 1.5 0 0 0 0 2.121l.3.3L2.423 7.5H2A1.5 1.5 0 0 0 .5 9v3A1.5 1.5 0 0 0 2 13.5h.423l.452 1.09-.3.3a1.5 1.5 0 0 0 0 2.121l1.414 1.414a1.5 1.5 0 0 0 2.121 0l.3-.3 1.09.452V18A1.5 1.5 0 0 0 8.5 19.5h3a1.5 1.5 0 0 0 1.5-1.5v-.423l1.09-.452.3.3a1.5 1.5 0 0 0 2.121 0l1.414-1.414a1.5 1.5 0 0 0 0-2.121l-.3-.3.452-1.09H18a1.5 1.5 0 0 0 1.5-1.5v-3A1.5 1.5 0 0 0 18 7.5Zm-8 6a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"/>
                             </svg>
                             <span class="ml-3">Fasilitas</span>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="{{ route('superadmin.siswa.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                            <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                            </svg>
-                            <span class="ml-3">Siswa</span>
-                        </a>
-                    </li> -->
+                  
                 </ul>
             </nav>
         </aside>

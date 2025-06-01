@@ -38,7 +38,7 @@ class FacilityController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('superadmin.facilities.index')
+        return redirect()->route('superadmin.facility.index')
             ->with('success', 'Fasilitas berhasil ditambahkan.');
     }
 
@@ -72,7 +72,7 @@ class FacilityController extends Controller
 
         $facility->update($data);
 
-        return redirect()->route('superadmin.facilities.index')
+        return redirect()->route('superadmin.facility.index')
             ->with('success', 'Fasilitas berhasil diperbarui.');
     }
 
@@ -84,7 +84,7 @@ class FacilityController extends Controller
         
         $facility->delete();
 
-        return redirect()->route('superadmin.facilities.index')
+        return redirect()->route('superadmin.facility.index')
             ->with('success', 'Fasilitas berhasil dihapus.');
     }
-} 
+}

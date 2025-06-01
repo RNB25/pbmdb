@@ -6,7 +6,7 @@
 <div class="container mx-auto px-4">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Daftar Fasilitas</h1>
-        <a href="{{ route('superadmin.facilities.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+        <a href="{{ route('superadmin.facility.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
             Tambah Fasilitas
         </a>
     </div>
@@ -40,8 +40,8 @@
                             <div class="text-sm text-gray-900">{{ Str::limit($facility->description, 100) }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('superadmin.facilities.edit', $facility) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                            <form action="{{ route('superadmin.facilities.destroy', $facility) }}" method="POST" class="inline">
+                            <a href="{{ route('superadmin.facility.edit', $facility) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                            <form action="{{ route('superadmin.facility.destroy', $facility) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?')">Hapus</button>

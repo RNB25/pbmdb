@@ -12,12 +12,12 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::latest()->paginate(10);
-        return view('Module.Dashboard.news.index', compact('news'));
+        return view('Module.News.index', compact('news'));
     }
 
     public function create()
     {
-        return view('Module.Dashboard.news.create');
+        return view('Module.News.create');
     }
 
     public function store(Request $request)
@@ -45,7 +45,7 @@ class NewsController extends Controller
             ]);
         }
 
-        return redirect()->route('superadmin.news.index')
+        return redirect()->route('Module.News.index')
             ->with('success', 'Berita berhasil ditambahkan');
     }
 
@@ -56,7 +56,7 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-        return view('Module.Dashboard.news.edit', compact('news'));
+        return view('Module.News.edit', compact('news'));
     }
 
     public function update(Request $request, News $news)
@@ -91,7 +91,7 @@ class NewsController extends Controller
 
         $news->update($data);
 
-        return redirect()->route('superadmin.news.index')
+        return redirect()->route('Module.News.index')
             ->with('success', 'Berita berhasil diperbarui');
     }
 
@@ -103,7 +103,7 @@ class NewsController extends Controller
 
         $news->delete();
 
-        return redirect()->route('superadmin.news.index')
+        return redirect()->route('Module.News.index')
             ->with('success', 'Berita berhasil dihapus');
     }
 } 

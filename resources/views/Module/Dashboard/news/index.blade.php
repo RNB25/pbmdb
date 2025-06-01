@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('Module.Dashboard.main')
 
 @section('title', 'Berita & Kegiatan')
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-36">
     <div class="text-center mb-12">
         <h1 class="text-4xl font-bold mb-4">Berita & Kegiatan</h1>
         <p class="text-gray-600 max-w-2xl mx-auto">
@@ -16,7 +16,7 @@
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                 @if($item->image)
                     <div class="relative h-48">
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" class="object-cover w-full h-full">
+                        <img src="{{ asset($item->image) }}" alt="{{ $item->title }}" class="object-cover w-full h-full">
                     </div>
                 @else
                     <div class="relative h-48 bg-gray-200">
@@ -45,7 +45,7 @@
                     <p class="text-gray-600 mb-4">
                         {{ Str::limit(strip_tags($item->content), 150) }}
                     </p>
-                    <a href="{{ route('news.show', $item) }}" class="inline-flex items-center text-blue-600 hover:text-blue-700">
+                    <a href="{{ route('app.news.show', $item) }}" class="inline-flex items-center text-blue-600 hover:text-blue-700">
                         Baca Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 ml-2">
                             <line x1="5" y1="12" x2="19" y2="12"></line>

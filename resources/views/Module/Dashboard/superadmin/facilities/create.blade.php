@@ -7,7 +7,7 @@
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-2xl font-bold mb-6">Tambah Fasilitas</h2>
 
-        <form action="{{ route('superadmin.facilities.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('superadmin.facility.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">
@@ -48,7 +48,7 @@
             </div>
 
             <div class="flex justify-end space-x-4">
-                <a href="{{ route('superadmin.facilities.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <a href="{{ route('superadmin.facility.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     Batal
                 </a>
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
