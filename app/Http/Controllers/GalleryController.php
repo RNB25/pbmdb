@@ -11,7 +11,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::latest()->paginate(12);
-        return view('Module.Dashboard.gallery.index', compact('galleries'));
+        return view('Module.Dashboard.gallery', compact('galleries'));
     }
 
     public function create()

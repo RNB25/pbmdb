@@ -72,9 +72,7 @@ Route::prefix('formulir-pendaftaran-siswa')->group(function () {
 Route::get('/berita', [NewsController::class, 'index'])->name('app.news.index');
 Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->name('app.news.show');
 
-Route::get('/gallery', function () {
-    return view('Module.Dashboard.gallery');
-})->name('gallery.index');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 
 // Resource routes for main controllers
 Route::resource('users', UserController::class)->names('app.users');

@@ -45,7 +45,7 @@ class NewsController extends Controller
             ]);
         }
 
-        return redirect()->route('Module.News.index')
+        return redirect()->route('superadmin.news.index')
             ->with('success', 'Berita berhasil ditambahkan');
     }
 
@@ -91,7 +91,7 @@ class NewsController extends Controller
 
         $news->update($data);
 
-        return redirect()->route('Module.News.index')
+        return redirect()->route('superadmin.news.index')
             ->with('success', 'Berita berhasil diperbarui');
     }
 
@@ -102,8 +102,7 @@ class NewsController extends Controller
         }
 
         $news->delete();
-
-        return redirect()->route('Module.News.index')
+        return redirect()->route('superadmin.news.index')
             ->with('success', 'Berita berhasil dihapus');
     }
 } 

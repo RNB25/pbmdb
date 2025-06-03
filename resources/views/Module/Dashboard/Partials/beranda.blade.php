@@ -90,19 +90,19 @@
         <div class="container">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">500+</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_students ?? '500+' }}</div>
                     <div class="text-sm uppercase tracking-wider">Siswa</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">50+</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_staff ?? '50+' }}</div>
                     <div class="text-sm uppercase tracking-wider">Guru & Staff</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">20+</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_extracurriculars ?? '20+' }}</div>
                     <div class="text-sm uppercase tracking-wider">Ekstrakurikuler</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">100+</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_achievements ?? '100+' }}</div>
                     <div class="text-sm uppercase tracking-wider">Prestasi</div>
                 </div>
             </div>
@@ -121,9 +121,10 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                @forelse($programUnggulan as $program)
                 <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
                     <div class="h-48 relative">
-                        <img src="{{ asset('asset/img/img_1.jpg') }}" alt="Program Akademik" class="object-cover w-full h-full">
+                        <img src="{{ asset($program->image) }}" alt="{{ $program->title }}" class="object-cover w-full h-full">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3">
@@ -131,12 +132,9 @@
                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                             </svg>
-                            <h3 class="font-bold text-lg">Program Akademik</h3>
+                            <h3 class="font-bold text-lg">{{ $program->title }}</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Kurikulum yang komprehensif dengan penekanan pada matematika, sains, bahasa, dan teknologi
-                            informasi.
-                        </p>
+                        <p class="text-gray-600 mb-4">{{ $program->description }}</p>
                         <a href="#" class="text-blue-600 font-medium flex items-center">
                             Selengkapnya
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
@@ -145,61 +143,11 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
-                    <div class="h-48 relative">
-                        <img src="{{ asset('asset/img/marching_band.jpg') }}" alt="Program Karakter" class="object-cover w-full h-full">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-blue-600">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                            <h3 class="font-bold text-lg">Pembentukan Karakter</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Program pembentukan karakter melalui kegiatan keagamaan, kepemimpinan, dan pengabdian masyarakat.
-                        </p>
-                        <a href="#" class="text-blue-600 font-medium flex items-center">
-                            Selengkapnya
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </a>
-                    </div>
+                @empty
+                <div class="col-span-3 text-center">
+                    <p>Belum ada program unggulan yang ditampilkan</p>
                 </div>
-
-                <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden">
-                    <div class="h-48 relative">
-                        <img src="{{ asset('asset/img/pramuka.jpg') }}" alt="Program Bakat" class="object-cover w-full h-full">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-blue-600">
-                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                                <path d="M4 22h16"></path>
-                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                            </svg>
-                            <h3 class="font-bold text-lg">Pengembangan Bakat</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Berbagai kegiatan ekstrakurikuler di bidang olahraga, seni, dan keterampilan untuk mengembangkan
-                            bakat siswa.
-                        </p>
-                        <a href="#" class="text-blue-600 font-medium flex items-center">
-                            Selengkapnya
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -231,117 +179,29 @@
                     </button>
                 </div>
 
-                <div x-show="activeTab === 'akademik'" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white  rounded-lg shadow-sm">
+                @foreach(['akademik', 'olahraga', 'teknologi', 'penunjang'] as $category)
+                <div x-show="activeTab === '{{ $category }}'" class="grid grid-cols-1 md:grid-cols-3 gap-6" style="display: none;">
+                    @php
+                        $categoryFacilities = $fasilitas->where('category', $category);
+                    @endphp
+                    
+                    @forelse($categoryFacilities as $facility)
+                    <div class="bg-white rounded-lg shadow-sm">
                         <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="https://images.pexels.com/photos/256395/pexels-photo-256395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Ruang Kelas" class="object-cover w-full h-full">
+                            <img src="{{ asset('storage/' . $facility->image) }}" alt="{{ $facility->name }}" class="object-cover w-full h-full">
                         </div>
                         <div class="deskripsi pt-4 pb-12 px-5">
-                            <h3 class="font-bold text-lg mb-2">Ruang Kelas Modern</h3>
-                            <p class="text-gray-600">
-                                Ruang kelas yang nyaman dilengkapi dengan AC, smart TV, dan peralatan multimedia.
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="bg-white  rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="https://images.pexels.com/photos/256395/pexels-photo-256395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Ruang Kelas" class="object-cover w-full h-full">
-                        </div>
-                        <div class="deskripsi pt-4 pb-12 px-5">
-                            <h3 class="font-bold text-lg mb-2">Laboratorium</h3>
-                            <p class="text-gray-600">
-                                Ruang kelas yang nyaman dilengkapi dengan AC, smart TV, dan peralatan multimedia.
-                            </p>
+                            <h3 class="font-bold text-lg mb-2">{{ $facility->name }}</h3>
+                            <p class="text-gray-600">{{ $facility->description }}</p>
                         </div>
                     </div>
-                    <div class="bg-white  rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="https://images.pexels.com/photos/256395/pexels-photo-256395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Ruang Kelas" class="object-cover w-full h-full">
-                        </div>
-                        <div class="deskripsi pt-4 pb-12 px-5">
-                            <h3 class="font-bold text-lg mb-2">Perpustakaan</h3>
-                            <p class="text-gray-600">
-                                Ruang kelas yang nyaman dilengkapi dengan AC, smart TV, dan peralatan multimedia.
-                            </p>
-                        </div>
-
+                    @empty
+                    <div class="col-span-3 text-center py-12">
+                        <p class="text-gray-600">Belum ada fasilitas untuk kategori ini.</p>
                     </div>
+                    @endforelse
                 </div>
-
-                <div x-show="activeTab === 'olahraga'" class="grid grid-cols-1 md:grid-cols-3 gap-6" style="display: none;">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/basketball.jpg') }}" alt="Lapangan Basket" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Lapangan Basket</h3>
-                        <p class="text-gray-600">Lapangan basket berstandar nasional dengan tribun penonton.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/futsal.jpg') }}" alt="Lapangan Futsal" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Lapangan Futsal</h3>
-                        <p class="text-gray-600">Lapangan futsal indoor dengan rumput sintetis berkualitas tinggi.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/pool.jpg') }}" alt="Kolam Renang" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Kolam Renang</h3>
-                        <p class="text-gray-600">Kolam renang semi-olimpik dengan sistem filtrasi modern.</p>
-                    </div>
-                </div>
-
-                <div x-show="activeTab === 'teknologi'" class="grid grid-cols-1 md:grid-cols-3 gap-6" style="display: none;">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/computer-lab.jpg') }}" alt="Lab Komputer" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Laboratorium Komputer</h3>
-                        <p class="text-gray-600">Lab komputer dengan perangkat terbaru dan koneksi internet cepat.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/multimedia.jpg') }}" alt="Studio Multimedia" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Studio Multimedia</h3>
-                        <p class="text-gray-600">Studio untuk produksi video, podcast, dan konten digital lainnya.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/robotics.jpg') }}" alt="Ruang Robotik" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Ruang Robotik</h3>
-                        <p class="text-gray-600">Ruang khusus untuk pembelajaran dan pengembangan robotik.</p>
-                    </div>
-                </div>
-
-                <div x-show="activeTab === 'penunjang'" class="grid grid-cols-1 md:grid-cols-3 gap-6" style="display: none;">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/canteen.jpg') }}" alt="Kantin" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Kantin Sehat</h3>
-                        <p class="text-gray-600">
-                            Kantin yang menyediakan makanan sehat dan bergizi dengan harga terjangkau.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/hall.jpg') }}" alt="Aula" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Aula Serbaguna</h3>
-                        <p class="text-gray-600">Aula dengan kapasitas 500 orang untuk berbagai kegiatan sekolah.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="h-48 relative mb-4 rounded-md overflow-hidden">
-                            <img src="{{ asset('images/health.jpg') }}" alt="UKS" class="object-cover w-full h-full">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2">Unit Kesehatan Sekolah</h3>
-                        <p class="text-gray-600">UKS dengan peralatan medis dasar dan petugas kesehatan.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -354,21 +214,6 @@
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
                 <p class="max-w-3xl text-gray-600">Informasi terbaru tentang kegiatan dan prestasi SMP Karya Guna.</p>
             </div>
-
-            @php
-                $latestNews = \App\Models\News::where('is_published', true)
-                    ->orderBy('published_date', 'desc')
-                    ->take(3)
-                    ->get();
-
-                // Debug information
-                if (app()->environment('local')) {
-                    echo '<!-- Debug: Found ' . $latestNews->count() . ' news articles -->';
-                    foreach ($latestNews as $news) {
-                        echo '<!-- Debug: ' . $news->title . ' -->';
-                    }
-                }
-            @endphp
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @forelse ($latestNews as $item)
@@ -399,9 +244,6 @@
                 @empty
                     <div class="col-span-3 text-center py-12">
                         <p class="text-gray-600">Belum ada berita yang dipublikasikan.</p>
-                        @if (app()->environment('local'))
-                            <p class="text-sm text-gray-500 mt-2">Debug: No news found in database</p>
-                        @endif
                     </div>
                 @endforelse
             </div>
@@ -426,39 +268,32 @@
                 <p class="max-w-3xl text-gray-600">Dokumentasi kegiatan dan momen berkesan di SMP Karya Guna.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                @php
-                    // Utamakan gambar dari asset lokal
-                    $galleryImages = [
-                        asset('asset/img/smpnya.jpg'),
-                        asset('asset/img/seni_tari.jpg'),
-                        asset('asset/img/marching_band.jpg'),
-                        'https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg?auto=compress&w=600&q=80', // Siswa di kelas
-                        'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&w=600&q=80', // Suasana kelas
-                        'https://images.pexels.com/photos/3059741/pexels-photo-3059741.jpeg?auto=compress&w=600&q=80', // Guru mengajar
-                        'https://images.pexels.com/photos/1466335/pexels-photo-1466335.jpeg?auto=compress&w=600&q=80', // Siswa belajar kelompok
-                        'https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&w=600&q=80', // Perpustakaan sekolah
-                        'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&w=600&q=80', // Lapangan sekolah
-                        'https://images.pexels.com/photos/301926/pexels-photo-301926.jpeg?auto=compress&w=600&q=80', // Siswa membaca buku
-                        'https://images.pexels.com/photos/256369/pexels-photo-256369.jpeg?auto=compress&w=600&q=80', // Siswa di laboratorium
-                        'https://images.pexels.com/photos/1337387/pexels-photo-1337387.jpeg?auto=compress&w=600&q=80', // Siswa bermain di halaman
-                    ];
-                @endphp
-                @foreach (array_slice($galleryImages, 0, 12) as $i => $img)
-                    <div class="relative h-48 md:h-64 rounded-lg overflow-hidden">
-                        <img src="{{ $img }}" alt="Galeri {{ $i+1 }}" class="object-cover w-full h-full hover:scale-110 transition-transform duration-300" loading="lazy">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                @forelse($gallery as $photo)
+                <div class="gallery-item">
+                    <div class="relative group cursor-pointer">
+                        <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" class="w-full h-64 object-cover rounded-lg" onclick="openLightbox('{{ asset($photo->image) }}', '{{ $photo->title }}', '{{ $photo->description }}', '{{ $photo->category }}')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                            <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
+                                <h3 class="font-bold text-lg mb-2">{{ $photo->title }}</h3>
+                                <p class="text-sm">{{ $photo->description }}</p>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
+                </div>
+                @empty
+                <div class="col-span-4 text-center py-12">
+                    <p class="text-gray-600">Belum ada foto yang ditampilkan.</p>
+                </div>
+                @endforelse
             </div>
 
             <div class="flex justify-center mt-8">
-                <a href="{{ route('app.gallery.index') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
-                        <circle cx="9" cy="9" r="2"></circle>
-                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
-                    </svg>
+                <a href="{{ route('app.gallery.index') }}" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-10 px-4 py-2">
                     Lihat Semua Foto
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -568,7 +403,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-lg">Alamat</h3>
-                                    <p class="text-gray-600">Jl. Pendidikan No. 123, Kota Jakarta, 12345</p>
+                                    <p class="text-gray-600">{{ $contact->address ?? 'Jl. Pendidikan No. 123, Kota Jakarta, 12345' }}</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
