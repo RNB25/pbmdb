@@ -47,6 +47,17 @@ class LoginController extends Controller
         }
 
         $user = auth()->guard('api')->user();
+        if (isset($user->status_users_id) && $user->status_users_id == 2) {
+            if (!$user->is_aktif) {
+                return redirect()->back()->withErrors([
+                    'login' => json_encode([
+                        'success' => false,
+                        'message' => 'Akun Anda belum diverifikasi oleh admin.'
+                    ])
+                ])->withInput();
+            }
+        }
+
         Log::info('Login successful', [
             'user_id' => $user->id,
             'username' => $user->username,
@@ -55,7 +66,7 @@ class LoginController extends Controller
 
         // Simpan token di session
         session(['jwt_token' => $token]);
-        
+
         // Set user ke auth()->user()
         auth()->setUser($user);
 
