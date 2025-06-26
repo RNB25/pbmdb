@@ -52,11 +52,13 @@
     <header class="fixed w-full bg-white shadow-md z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
+                <a href="/"  class="flex items-center">
                 <img src="{{ asset('asset/logo/logo-smp.png') }}" alt="Logo SMP Karya Guna Jaya" class="h-12 mr-3">
                 <div>
-                    <h1 class="text-xl font-bold text-primary">SMP KGJ</h1>
-                    <p class="text-xs text-gray-600">SMP Karya Guna Jaya</p>
+                    <h1 class="text-xl font-bold text-primary">Sekolah Menengah Pertama</h1>
+                    <p class="text-xs text-gray-600">Karya Guna Jaya</p>
                 </div>
+            </a>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-8">
@@ -92,7 +94,7 @@
     <section id="profile" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-primary mb-4">PROFIL SEKOLAH</h2>
+                <h2 class="text-3xl font-bold text-primary mb-2 mt-4">PROFIL SEKOLAH</h2>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
             </div>
 
@@ -501,10 +503,10 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <div class="flex items-center">
-                        <img src="https://via.placeholder.com/40" alt="Logo SMP Karya Guna Jaya" class="h-10 mr-3">
+                        <img src="{{ asset('asset/logo/logo-smp.png') }}" alt="Logo SMP Karya Guna Jaya" class="h-10 mr-3">
                         <div>
-                            <h3 class="font-bold">SMP KARYA GUNA JAYA</h3>
-                            <p class="text-sm opacity-80">Bekasi - Akreditasi A (Unggul)</p>
+                            <h3 class="font-bold">Sekolah Menengah Pertama</h3>
+                            <p class="text-sm opacity-80">Karya Guna Jaya</p>
                         </div>
                     </div>
                 </div>
