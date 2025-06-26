@@ -95,10 +95,10 @@ Route::prefix('superadmin')->middleware('jwt.auth.blade')->group(function () {
 
 // Routes profile sekolah
 Route::prefix('profile')->group(function () {
-    Route::get('/struktur-organisasi', [ProfileSekolahController::class, 'strukturOrganisasi'])->name('profile.struktur');
-    Route::get('/kepala-sekolah', [ProfileSekolahController::class, 'kepalaSekolah'])->name('profile.kepala');
-    Route::get('/pendidik', [ProfileSekolahController::class, 'pendidik'])->name('profile.pendidik');
-    Route::get('/ekstrakulikuler', [ProfileSekolahController::class, 'ekstrakulikuler'])->name('profile.ekstrakulikuler');
+    Route::get('/', [ProfileSekolahController::class, 'index'])->name('profile.index');
+    // Route::get('/kepala-sekolah', [ProfileSekolahController::class, 'kepalaSekolah'])->name('profile.kepala');
+    // Route::get('/pendidik', [ProfileSekolahController::class, 'pendidik'])->name('profile.pendidik');
+    // Route::get('/ekstrakulikuler', [ProfileSekolahController::class, 'ekstrakulikuler'])->name('profile.ekstrakulikuler');
 });
 
 Route::post('/kirim-pesan', [MessageController::class, 'store'])->name('kirim.pesan');

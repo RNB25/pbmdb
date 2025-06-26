@@ -23,7 +23,7 @@
         <div class="navbar-start is-flex is-justify-content-center is-align-items-center w-full">
             <a class="ml-5 navbar-text-color" href="">Home</a>
 
-            <div class="dropdown is-hoverable">
+            {{-- <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
                     <a class="ml-5 navbar-text-color" href="#" aria-haspopup="true" aria-controls="dropdown-menu4">Profile</a>
                     <i class="fas fa-angle-down navbar-text-color" aria-hidden="true"></i>
@@ -36,8 +36,9 @@
                         <a href="{{ route('profile.ekstrakulikuler') }}" class="dropdown-item has-text-weight-semibold" style="color: black">Ekstrakulikuler</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
+            <a class="ml-5 navbar-text-color" href="{{ route('profile.index') }}">Profile</a>
             <a class="ml-5 navbar-text-color" href="#berita">Info</a>
             <a class="ml-5 navbar-text-color" href="#galeri">Galeri</a>
             <a class="ml-5 navbar-text-color" href="#kontak">Contact</a>
