@@ -31,7 +31,7 @@ class CalonSiswaController extends Controller
             'jenis_kelamin' => 'required|exists:jenis_kelamin_m,id',
             'alamat'  => 'required|string',
             'jalur_masuk'   => 'required|string',
-            'nisn'          => 'required|string',
+            'nisn'          => 'required|string|unique:calon_siswa_t,nisn',
             'no_hp'         => 'required|regex:/^[0-9]+$/',
         ]);
         if ($validator->fails()) {

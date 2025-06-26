@@ -69,7 +69,7 @@
                             <span class="ml-3">Fasilitas</span>
                         </a>
                     </li>
-                  
+
                 </ul>
             </nav>
         </aside>
@@ -94,7 +94,7 @@
                         <p class="text-gray-500">{{ auth()->user()->role }}</p>
                     </div>
                 </div>
-
+                
                 <!-- Logout Button -->
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
@@ -114,4 +114,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     @stack('scripts')
 </body>
-</html> 
+</html>

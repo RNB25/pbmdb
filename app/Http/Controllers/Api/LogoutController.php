@@ -22,18 +22,17 @@ class LogoutController extends Controller
         //remove token
         $removeToken = JWTAuth::invalidate(JWTAuth::getToken());
 
-        if($removeToken) {
+        if(isset($removeToken)) {
             // Clear the session
             session()->forget('jwt_token');
-            auth()->logout();
-            
+
             // Redirect to login page with success message
             return redirect()->route('login')
                 ->with('success', 'Berhasil logout!');
         }
 
         // If token removal fails, still redirect to login
-        return redirect()->route('login')
-            ->withErrors(['login' => 'Gagal logout, silakan coba lagi.']);
+         return redirect()->route('login')
+                ->with('success', 'Berhasil logout.');
     }
 }

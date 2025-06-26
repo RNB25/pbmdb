@@ -13,7 +13,7 @@ return new class extends Migration
             $table->boolean('aktif')->default(true);
             $table->string('email')->unique();
             $table->string('jalur_masuk');
-            $table->string('nisn');
+            $table->string('nisn')->unique();
             $table->string('nama_lengkap');
             $table->string('alamat');
             $table->date('tanggal_lahir');
@@ -30,4 +30,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('calon_siswa_t');
     }
-}; 
+};

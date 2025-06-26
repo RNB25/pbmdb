@@ -30,10 +30,10 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                     <div class="dropdown-content">
-                        <a href="#program" class="dropdown-item has-text-weight-semibold" style="color: black">Struktur Organisasi</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Kepala Sekolah</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Pendidik</a>
-                        <a href="#" class="dropdown-item has-text-weight-semibold" style="color: black">Ekstrakulikuler</a>
+                        <a href="{{ route('profile.struktur') }}" class="dropdown-item has-text-weight-semibold" style="color: black">Struktur Organisasi</a>
+                        <a href="{{ route('profile.kepala') }}" class="dropdown-item has-text-weight-semibold" style="color: black">Kepala Sekolah</a>
+                        <a href="{{ route('profile.pendidik') }}" class="dropdown-item has-text-weight-semibold" style="color: black">Pendidik</a>
+                        <a href="{{ route('profile.ekstrakulikuler') }}" class="dropdown-item has-text-weight-semibold" style="color: black">Ekstrakulikuler</a>
                     </div>
                 </div>
             </div>

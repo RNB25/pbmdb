@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->text('alamat')->nullable();
             $table->string('jalur_masuk');
-            $table->string('nisn');
+            $table->string('nisn')->unique();
             $table->string('no_hp');
             $table->string('masuk_kelas')->nullable();
             $table->foreignIdFor(JenisKelamin::class, 'jenis_kelamin_id', 32, true);

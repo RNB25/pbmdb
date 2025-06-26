@@ -6,12 +6,7 @@
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
                 <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">SMP Karya Guna Jaya</h1>
                 <p class="mt-4 text-xl md:text-2xl max-w-3xl">
-
-                Dengan tema Karya Guna Jaya Untuk Indonesia, KGJ turut mempersiapkan SDM bangsa yang
-                                    handal
-                                    dalam
-                                    rangka menyongsong Indonesia Emas. Mari raih masa depan saat ini bersama Sekolah
-                                    Karya Guna Jaya (KGJ).
+                    Terakreditasi A
                 </p>
                 <div class="mt-8 flex flex-wrap justify-center gap-4">
                     <a href="{{ route('siswa.index') }}" class="inline-flex items-center justify-center !text-white rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-blue-700 h-11 px-8">
@@ -47,10 +42,6 @@
             <div class="flex flex-col items-center text-center mb-12">
                 <h2 class="text-3xl font-bold">Profil Sekolah</h2>
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
-                <p class="max-w-3xl text-gray-600">
-                    SMP Karya Guna Jaya adalah lembaga pendidikan yang berdedikasi untuk mengembangkan potensi siswa melalui
-                    pendidikan berkualitas dan pembentukan karakter.
-                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -94,11 +85,11 @@
                     <div class="text-sm uppercase tracking-wider">Siswa</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">{{ $stats->total_staff ?? '50+' }}</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_staff ?? '15+' }}</div>
                     <div class="text-sm uppercase tracking-wider">Guru & Staff</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl font-bold mb-2">{{ $stats->total_extracurriculars ?? '20+' }}</div>
+                    <div class="text-4xl font-bold mb-2">{{ $stats->total_extracurriculars ?? '6' }}</div>
                     <div class="text-sm uppercase tracking-wider">Ekstrakurikuler</div>
                 </div>
                 <div class="p-4">
@@ -113,10 +104,10 @@
     <section id="program" class="py-16">
         <div class="container">
             <div class="flex flex-col items-center text-center mb-12">
-                <h2 class="text-3xl font-bold">Program Unggulan</h2>
+                <h2 class="text-3xl font-bold">Program Beasiswa</h2>
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
                 <p class="max-w-3xl text-gray-600">
-                    SMP Karya Guna menawarkan berbagai program unggulan untuk mengembangkan potensi siswa secara maksimal.
+                    SMP Karya Guna menawarkan berbagai program beasiswa untuk memberikan kesempatan pendidikan yang lebih luas bagi generasi muda berprestasi dan berpotensi, serta demi mewujudkan masa depan yang lebih cerah.
                 </p>
             </div>
 
@@ -159,7 +150,7 @@
                 <h2 class="text-3xl font-bold">Fasilitas</h2>
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
                 <p class="max-w-3xl text-gray-600">
-                    SMP Karya Guna Jaya dilengkapi dengan berbagai fasilitas modern untuk mendukung proses belajar mengajar.
+                    SMP Karya Guna Jaya menyediakan berbagai fasilitas yang lengkap dan modern untuk mendukung proses belajar mengajar yang nyaman, aman, dan menyenangkan bagi seluruh siswa.
                 </p>
             </div>
 
@@ -184,7 +175,7 @@
                     @php
                         $categoryFacilities = $fasilitas->where('category', $category);
                     @endphp
-                    
+
                     @forelse($categoryFacilities as $facility)
                     <div class="bg-white rounded-lg shadow-sm">
                         <div class="h-48 relative mb-4 rounded-md overflow-hidden">
@@ -305,7 +296,7 @@
             <div class="flex flex-col items-center text-center mb-12">
                 <h2 class="text-3xl font-bold">Testimoni</h2>
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
-                <p class="max-w-3xl text-gray-600">Apa kata mereka tentang SMP Karya Guna.</p>
+                <p class="max-w-3xl text-gray-600">Apa kata para alumni tentang SMP Karya Guna.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -316,11 +307,10 @@
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Orang Tua Siswa" class="object-cover w-full h-full">
                         </div>
                         <p class="text-gray-600 italic mb-4">
-                            "SMP Karya Guna memberikan pendidikan terbaik untuk anak saya. Tidak hanya akademik, tetapi juga
-                            pembentukan karakter yang sangat baik."
+                            "Saya sangat senang bersekolah di SMP Karya Guna Jaya. Sekolah ini memiliki lingkungan yang nyaman dan aman, sehingga saya dapat fokus pada belajar."
                         </p>
-                        <h4 class="font-bold">Budi Santoso</h4>
-                        <p class="text-sm text-gray-500">Orang Tua Siswa</p>
+                        <h4 class="font-bold">Natasya Della</h4>
+                        <p class="text-sm text-gray-500">4 bulan lalu</p>
                     </div>
                 </div>
 
@@ -331,11 +321,10 @@
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alumni" class="object-cover w-full h-full">
                         </div>
                         <p class="text-gray-600 italic mb-4">
-                            "Tiga tahun di SMP Karya Guna adalah masa yang sangat berkesan. Saya mendapatkan banyak ilmu dan
-                            pengalaman yang berharga."
+                            "Sekolahnya sangat seru, gurunya sangat baik sekali, lingkungan sekolahnya sangat bersih dan juga rapih."
                         </p>
-                        <h4 class="font-bold">Anita Wijaya</h4>
-                        <p class="text-sm text-gray-500">Alumni Angkatan 2022</p>
+                        <h4 class="font-bold">Adji Ismail</h4>
+                        <p class="text-sm text-gray-500">4 bulan lalu</p>
                     </div>
                 </div>
 
@@ -346,10 +335,10 @@
                             <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Siswa" class="object-cover w-full h-full">
                         </div>
                         <p class="text-gray-600 italic mb-4">
-                            "Belajar di SMP Karya Guna sangat menyenangkan. Guru-gurunya ramah dan fasilitas sekolahnya lengkap."
+                            "Selama sekolah disini nyaman, lapangan luas, ruangan lengkap, lab ada, spp murah, deket rumah juga, gurunya baik."
                         </p>
-                        <h4 class="font-bold">Dimas Pratama</h4>
-                        <p class="text-sm text-gray-500">Siswa Kelas 8</p>
+                        <h4 class="font-bold">Airra Agustiani</h4>
+                        <p class="text-sm text-gray-500">10 bulan lalu</p>
                     </div>
                 </div>
             </div>
@@ -385,11 +374,7 @@
             <div class="flex flex-col items-center text-center mb-12">
                 <h2 class="text-3xl font-bold">Kontak Kami</h2>
                 <div class="w-20 h-1 bg-blue-600 mt-4 mb-6"></div>
-                <p class="max-w-3xl text-gray-600">
-                    Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin informasi lebih lanjut.
-                </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <div class="bg-gray-100 p-6 rounded-lg">
@@ -403,7 +388,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-lg">Alamat</h3>
-                                    <p class="text-gray-600">{{ $contact->address ?? 'Jl. Pendidikan No. 123, Kota Jakarta, 12345' }}</p>
+                                    <p class="text-gray-600">{{ $contact->address ?? 'Jl. Al.Huda Rawa Sapi Jatimulya Tambun Selatan, Kabupaten Bekasi.' }}</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
@@ -414,7 +399,8 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-lg">Telepon</h3>
-                                    <p class="text-gray-600">(021) 1234-5678</p>
+                                    <p class="text-gray-600">0896 7550 6676</p>
+                                    <p class="text-gray-600">0899 0737 857</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
@@ -426,7 +412,20 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-lg">Email</h3>
-                                    <p class="text-gray-600">info@smpKarya Guna.sch.id</p>
+                                    <p class="text-gray-600">karyagunajaya10@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-blue-600 text-white p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Instagram</h3>
+                                    <p class="text-gray-600">ppdb_karyagunajaya</p>
                                 </div>
                             </div>
                         </div>
@@ -526,6 +525,6 @@
         ></iframe>
         <div class="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-white/80 rounded-lg px-4 py-2 shadow text-center">
             <p class="text-lg font-medium">Peta Lokasi SMP Karya Guna Jaya</p>
-            <p class="text-sm text-gray-600">Jl. Pendidikan No. 123, Kota Bekasi, 12345</p>
+            <p class="text-sm text-gray-600">Jl. Al.Huda Rawa Sapi Jatimulya Tambun Selatan, Kabupaten Bekasi.</p>
         </div>
     </section>

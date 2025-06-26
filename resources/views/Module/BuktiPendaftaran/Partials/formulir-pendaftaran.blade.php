@@ -283,6 +283,11 @@
                         class="w-full bg-blue-600 text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 transition-all">
                         Simpan Pendaftaran
                     </button>
+                    @elseif (isset ($calonSiswa->is_formulir) && $calonSiswa->is_formulir == true)
+                        <button type="button"
+                        class="w-full bg-blue-600 text-white py-2 px-6 rounded-lg text-sm hover:bg-blue-700 transition-all">
+                        Berkas Sudah diverifikasi
+                    </button>
                 @else
                     <button type="button"
                         onclick="showSuccessToast('Berkas sedang diverifikasi, tidak bisa diedit.')"

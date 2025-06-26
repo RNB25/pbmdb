@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProgramUnggulanController;
+use App\Http\Controllers\ProfileSekolahController;
 // Superadmin
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
 use App\Http\Controllers\Superadmin\UserController as SuperadminUserController;
@@ -49,7 +50,6 @@ Route::middleware('jwt.auth.blade')->group(function () {
     // });
     //
 
-    // buat route baru aja san buat registrasi nya fungsi nya di faste aja nnti
     Route::post('/logout', LogoutController::class)->name('logout');
 
 
@@ -91,3 +91,10 @@ Route::prefix('superadmin')->middleware('jwt.auth.blade')->group(function () {
     Route::resource('facility', SuperadminFacilityController::class)->names('superadmin.facility');
 });
 
+// Routes profile sekolah
+Route::prefix('profile')->group(function () {
+    Route::get('/struktur-organisasi', [ProfileSekolahController::class, 'strukturOrganisasi'])->name('profile.struktur');
+    Route::get('/kepala-sekolah', [ProfileSekolahController::class, 'kepalaSekolah'])->name('profile.kepala');
+    Route::get('/pendidik', [ProfileSekolahController::class, 'pendidik'])->name('profile.pendidik');
+    Route::get('/ekstrakulikuler', [ProfileSekolahController::class, 'ekstrakulikuler'])->name('profile.ekstrakulikuler');
+});
