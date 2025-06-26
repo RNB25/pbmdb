@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\Facility;
 use App\Models\ProgramUnggulan;
 use Illuminate\Http\Request;
+use App\Models\Message;
 
 class LandingPageController extends Controller
 {
@@ -18,11 +19,13 @@ class LandingPageController extends Controller
             ->get();
 
         $programUnggulan = ProgramUnggulan::latest()->take(6)->get();
-        
+
         $fasilitas = Facility::latest()->take(6)->get();
-        
+
         $gallery = Gallery::latest()->take(6)->get();
 
-        return view('Module.Dashboard.main', compact('latestNews', 'programUnggulan', 'fasilitas', 'gallery'));
+        $messages = Message::all();
+
+        return view('Module.Dashboard.main', compact('latestNews', 'programUnggulan', 'fasilitas', 'gallery','messages'));
     }
 }

@@ -86,4 +86,4 @@
         {{ $programs->links() }}
     </div>
 </div>
-@endsection 
+@endsection

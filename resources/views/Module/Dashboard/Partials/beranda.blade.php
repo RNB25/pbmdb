@@ -453,7 +453,7 @@
                 <div>
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="font-bold text-lg mb-4">Kirim Pesan</h3>
-                        <form action="" method="POST" class="space-y-4">
+                        <form action="{{ route('kirim.pesan') }}" method="POST" class="space-y-4">
                             @csrf
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-2">
@@ -506,6 +506,46 @@
                             </button>
                         </form>
                     </div>
+                    <div class="mt-8 space-y-4">
+                        <h3 class="font-bold text-lg mb-2">Daftar Pesan</h3>
+
+                        @foreach ($messages as $item)
+                            <div class="border border-gray-200 rounded-lg p-4 bg-gray-50 shadow-sm">
+                                <div class="mb-2">
+                                    <p class="text-sm text-gray-500">Dari:</p>
+                                    <p class="text-base font-semibold text-gray-800">{{ $item->name }}</p>
+                                    @if ($item->email)
+                                        <p class="text-sm text-gray-500">{{ $item->email }}</p>
+                                    @endif
+                                </div>
+
+                                @if ($item->subject)
+                                    <div class="mb-2">
+                                        <p class="text-sm text-gray-500">Subjek:</p>
+                                        <p class="text-base text-gray-700">{{ $item->subject }}</p>
+                                    </div>
+                                @endif
+
+                                <div class="mb-2">
+                                    <p class="text-sm text-gray-500">Pesan:</p>
+                                    <p class="text-base text-gray-700 whitespace-pre-line">{{ $item->message }}</p>
+                                </div>
+
+                                @if ($item->balasan)
+                                    <div class="mt-4 border-t pt-3 border-gray-300">
+                                        <p class="text-sm text-blue-600 font-semibold">Balasan Admin:</p>
+                                        <p class="text-base text-gray-800 whitespace-pre-line">{{ $item->balasan }}</p>
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if (session('success'))
+                        <div class="p-4 mb-4 text-green-800 bg-green-100 rounded-md">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

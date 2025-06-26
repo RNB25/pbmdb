@@ -57,4 +57,4 @@
         {{ $facilities->links() }}
     </div>
 </div>
-@endsection 
+@endsection

@@ -12,6 +12,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProgramUnggulanController;
 use App\Http\Controllers\ProfileSekolahController;
+use App\Http\Controllers\MessageController;
 // Superadmin
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
 use App\Http\Controllers\Superadmin\UserController as SuperadminUserController;
@@ -89,6 +90,7 @@ Route::prefix('superadmin')->middleware('jwt.auth.blade')->group(function () {
     Route::resource('program-unggulan', SuperadminProgramUnggulanController::class)->names('superadmin.program-unggulan');
     Route::resource('gallery', SuperadminGalleryController::class)->names('superadmin.gallery');
     Route::resource('facility', SuperadminFacilityController::class)->names('superadmin.facility');
+    Route::resource('massange', MessageController::class)->names('superadmin.massange');
 });
 
 // Routes profile sekolah
@@ -98,3 +100,5 @@ Route::prefix('profile')->group(function () {
     Route::get('/pendidik', [ProfileSekolahController::class, 'pendidik'])->name('profile.pendidik');
     Route::get('/ekstrakulikuler', [ProfileSekolahController::class, 'ekstrakulikuler'])->name('profile.ekstrakulikuler');
 });
+
+Route::post('/kirim-pesan', [MessageController::class, 'store'])->name('kirim.pesan');
