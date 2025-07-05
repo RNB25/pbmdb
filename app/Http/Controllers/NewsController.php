@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Gallery;
+use App\Models\Facility;
+use App\Models\ProgramUnggulan;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -16,8 +20,24 @@ class NewsController extends Controller
         $news = News::where('is_published', true)
             ->orderBy('published_date', 'desc')
             ->paginate(9);
-            
-        return view('Module.Dashboard.news.index', compact('news'));
+        $programUnggulan = News::where('is_published', true)
+            ->orderBy('published_date', 'desc')
+            ->paginate(9);
+        $latestNews = News::where('is_published', true)
+            ->orderBy('published_date', 'desc')
+            ->take(3)
+            ->get();
+
+        $programUnggulan = ProgramUnggulan::latest()->take(6)->get();
+
+
+        $fasilitas = Facility::latest()->take(6)->get();
+
+        $gallery = Gallery::latest()->take(6)->get();
+
+        $messages = Message::all();
+
+        return view('Module.Dashboard.news.index', compact('news','latestNews', 'programUnggulan', 'fasilitas', 'gallery','messages'));
     }
 
 

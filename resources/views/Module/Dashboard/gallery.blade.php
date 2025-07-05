@@ -12,10 +12,10 @@
 
     <!-- Filter Buttons -->
     <div class="flex flex-wrap justify-center gap-4 mb-8">
-        <button class="px-4 py-2 rounded-md bg-blue-600 text-white" data-filter="all">Semua</button>
+        {{-- <button class="px-4 py-2 rounded-md bg-blue-600 text-white" data-filter="all">Semua</button>
         <button class="px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200" data-filter="kegiatan">Kegiatan</button>
         <button class="px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200" data-filter="fasilitas">Fasilitas</button>
-        <button class="px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200" data-filter="prestasi">Prestasi</button>
+        <button class="px-4 py-2 rounded-md bg-gray-100 hover:bg-gray-200" data-filter="prestasi">Prestasi</button> --}}
     </div>
 
     <!-- Gallery Grid -->
@@ -49,13 +49,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            
+
             <div class="flex flex-col md:flex-row">
                 <!-- Image Section -->
                 <div class="md:w-2/3">
                     <img id="lightbox-image" src="" alt="" class="w-full h-auto object-contain">
                 </div>
-                
+
                 <!-- Details Section -->
                 <div class="md:w-1/3 p-6 bg-white">
                     <div class="mb-4">
@@ -75,7 +75,7 @@
     document.querySelectorAll('[data-filter]').forEach(button => {
         button.addEventListener('click', () => {
             const filter = button.dataset.filter;
-            
+
             // Update active button
             document.querySelectorAll('[data-filter]').forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white');
@@ -83,7 +83,7 @@
             });
             button.classList.remove('bg-gray-100', 'hover:bg-gray-200');
             button.classList.add('bg-blue-600', 'text-white');
-            
+
             // Filter items
             document.querySelectorAll('.gallery-item').forEach(item => {
                 if (filter === 'all' || item.dataset.category === filter) {
@@ -102,15 +102,15 @@
         const lightboxTitle = document.getElementById('lightbox-title');
         const lightboxDescription = document.getElementById('lightbox-description');
         const lightboxCategory = document.getElementById('lightbox-category');
-        
+
         lightboxImage.src = image;
         lightboxTitle.textContent = title;
         lightboxDescription.textContent = description;
         lightboxCategory.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-        
+
         lightbox.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
-        
+
         // Preload image
         const img = new Image();
         img.src = image;

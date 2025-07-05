@@ -21,7 +21,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu is-flex is-align-items-center is-justify-content-space-between">
         <div class="navbar-start is-flex is-justify-content-center is-align-items-center w-full">
-            <a class="ml-5 navbar-text-color" href="">Home</a>
+            <a class="ml-5 navbar-text-color" href="{{ url('/') }}">Home</a>
 
             {{-- <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
@@ -39,9 +39,9 @@
             </div> --}}
 
             <a class="ml-5 navbar-text-color" href="{{ route('profile.index') }}">Profile</a>
-            <a class="ml-5 navbar-text-color" href="#berita">Info</a>
-            <a class="ml-5 navbar-text-color" href="#galeri">Galeri</a>
-            <a class="ml-5 navbar-text-color" href="#kontak">Contact</a>
+            <a class="ml-5 navbar-text-color {{ request()->is('#berita') || request()->routeIs('app.news.*') ? 'active-nav-link' : '' }}" href="{{ url('/') }}#berita">Info</a>
+            <a class="ml-5 navbar-text-color {{ request()->is('#galeri') || request()->routeIs('app.gallery.*') ? 'active-nav-link' : '' }}" href="{{ url('/') }}#galeri">Galeri</a>
+            <a class="ml-5 navbar-text-color {{ request()->is('#kontak') ? 'active-nav-link' : '' }}" href="{{ url('/') }}#kontak">Contact</a>
         </div>
 
         {{-- @dd(Auth::user()->email) --}}
