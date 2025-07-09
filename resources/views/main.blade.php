@@ -1,4 +1,4 @@
-@include('partials.atas')
+@include('Partials.atas')
 
 <section class="h-full w-full">
     <div>
@@ -6,4 +6,4 @@
     </div>
 </section>
 
-@include('partials.bawah')
+@include('Partials.bawah')
