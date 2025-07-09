@@ -1,45 +1,46 @@
 @use "sass/utilities/css-variables" as cv;
 @use "sass/themes/dark" as dark;
 @use "sass/themes/setup";
-@import 'bulma/bulma';
+@import "bulma/bulma";
+
 @include cv.system-theme($name: "dark") {
-    @include dark.dark-theme;
+  @include dark.dark-theme;
 }
 
 @include cv.bulma-theme($name: "dark") {
-    @include dark.dark-theme;
-    @include setup.setup-theme;
+  @include dark.dark-theme;
+  @include setup.setup-theme;
 }
 
 .dark-mode-toggle {
-    position: relative;
-    width: $dark-mode-toggle-size;
-    height: $dark-mode-toggle-size;
-    border-radius: 50%;
-    cursor: pointer;
+  position: relative;
+  width: $dark-mode-toggle-size;
+  height: $dark-mode-toggle-size;
+  border-radius: 50%;
+  cursor: pointer;
 
-    .icon {
-        position: absolute;
-        transition: all 0.3s ease;
+  .icon {
+    position: absolute;
+    transition: all 0.3s ease;
 
-        &.sun {
-            opacity: 1;
-        }
-
-        &.moon {
-            opacity: 0;
-        }
+    &.sun {
+      opacity: 1;
     }
+
+    &.moon {
+      opacity: 0;
+    }
+  }
 }
 
 [data-theme="dark"] {
-    .dark-mode-toggle {
-        .sun {
-            opacity: 0;
-        }
-
-        .moon {
-            opacity: 1;
-        }
+  .dark-mode-toggle {
+    .sun {
+      opacity: 0;
     }
+
+    .moon {
+      opacity: 1;
+    }
+  }
 }
